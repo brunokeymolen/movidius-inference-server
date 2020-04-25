@@ -11,17 +11,17 @@ http://www.keymolen.com
 Dependencies:
 ------------
 
-coco.names
+coco.names<br>
 wget https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names
-
-frozen_darknet_yolov3_model.xml
-frozen_darknet_yolov3_model.bin
-
-These is a converted YoloV3 Darknet model to Intel Movidius IR.
+<p>
+frozen_darknet_yolov3_model.xml<br>
+frozen_darknet_yolov3_model.bin<br>
+<p>
+These is a converted YoloV3 Darknet model to Intel Movidius IR.<br>
 original models: https://pjreddie.com/darknet/yolo/
-
-Tutorial to convert models for Raspberry Pi:
-see http.keymolen.com/ 
+<p>
+Tutorial to convert models for Raspberry Pi:<br>
+see http.keymolen.com/<br>
 
 
 Run
