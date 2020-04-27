@@ -224,21 +224,24 @@ img_cache = []
 @app.route('/inference', methods = ['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
-        f = request.files['file']
-      
+        f = request.files['inference-file']
         #https://medium.com/csmadeeasy/send-and-receive-images-in-flask-in-memory-solution-21e0319dcc1
         npimg = np.frombuffer(f.read(), dtype=np.uint8)
         frame = cv.imdecode(npimg,cv.IMREAD_COLOR)
         
         fname = secure_filename(f.filename)
         cache_key = str(uuid.uuid1())
+        
+        info = {"auto_submit": 1,
+                "rescale": 0}
 
         #rescale is only for consistent UI
         if request.form.get("rescale") is not None:
             w = frame.shape[1]
             h = frame.shape[0]
             frame = cv.resize(frame, (800, int(h*(800/w))))
-        
+            info["rescale"] = 1
+
         stats, result = inference(frame)
         class_info = stats["class-info"]
         print("stats", stats)
@@ -246,13 +249,17 @@ def upload_file():
         if len(img_cache) >= 3:
             img_cache.pop()
         
+        if request.form.get("autosubmit") is None:
+            info["auto_submit"] = 0
+
         #create jpeg first
         is_success, jpg = cv.imencode(".jpg", result)
         if is_success:
             img_cache.insert(0, [cache_key, jpg])
-            return render_template('result.html', image_res=cache_key, image_src=fname, stats=stats)
+            return render_template('result.html', image_res=cache_key, image_src=fname, stats=stats, info=info)
     
-    return render_template('result.html', image_res=None)
+    info = {"auto_submit": 0, "rescale": 1}
+    return render_template('result.html', image_res=None, auto_submit=0, info=info)
 
 
 
@@ -279,7 +286,9 @@ def send_statics(path):
 
 @app.route('/')
 def index():
-    return render_template('result.html', image_res=None)
+    info = {"auto_submit": 0, "rescale": 1}
+
+    return render_template('result.html', image_res=None, info=info)
 
 
 if __name__ == "__main__":

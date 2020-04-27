@@ -1,4 +1,8 @@
 <html>
+   <head>
+     <title>Inference Service</title>
+     <script type="text/javascript" src="statics/jquery-3.5.0.min.js"></script>
+   </head>
    <body> 
      <style>@import url('https://fonts.googleapis.com/css2?family=Glegoo:wght@700&display=swap');
       .main {
@@ -64,13 +68,14 @@
          <p>
          {% endif %}
          <div class="mw txt center">
-         <form action = "inference" method = "POST" enctype = "multipart/form-data">
+         <form id="inference-form" action="inference" method = "POST" enctype = "multipart/form-data">
            <table width=100% border=0><tr>
-               <td><input class="txt" type = "file" name = "file" /></td>
-              <td alight="right">Scale width to 800px <input type="checkbox" id="rescale" name="rescale" value="1" checked><br></td>
+               <td><input id="inference-file" class="txt" type="file" autofocus name ="inference-file" /></td>
+               <td alight="center">auto submit<input type="checkbox" id="autosubmit" name="autosubmit" value="1" {{ "checked" if info["auto_submit"]==1 else "" }} ><br></td>
+               <td alight="right">Scale width to 800px <input type="checkbox" id="rescale" name="rescale" value="1" {{ "checked" if info["rescale"]==1 else "" }}><br></td>
            </tr></table>
            <br>
-           <center><input class="inference" type = "submit" value="Run Inference"/></center>
+           <center><input id="inference-submit" class="inference" type = "submit" value="Run Inference"/></center>
           </form>
          </div>
          {% if stats is not none %}
@@ -81,5 +86,14 @@
     </div>     
     {% endif %}
     <p class="bottom">(2020) Author: <a href="www.keymolen.com">Bruno Keymolen </a><br>email: <a href="mailto:bruno.keymolen@gmail.com">bruno.keymolen@gmail.com</a></p>
+   <script type="text/javascript">
+
+    document.getElementById("inference-file").onchange = function() {
+      if (document.getElementById("autosubmit").checked)
+      {
+        document.getElementById("inference-form").submit();
+      }
+    };
+   </script>
    </body>
 </html>
