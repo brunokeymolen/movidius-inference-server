@@ -9,7 +9,7 @@ This project is originally made to run on a Raspberry Pi, though it should run o
 http://www.keymolen.com
 
 
-Dependencies:
+Dependencies
 ------------
 
 coco.names<br>
@@ -18,7 +18,7 @@ wget https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names
 frozen_darknet_yolov3_model.xml<br>
 frozen_darknet_yolov3_model.bin<br>
 <p>
-These is a converted YoloV3 Darknet model to Intel Movidius IR.<br>
+YOLOv3 Darknet model (trained on coco dataset) in IR format for Intel Movidius.<br>
 original models: https://pjreddie.com/darknet/yolo/
 <p>
 Tutorial to convert models to Intel Movidius IR
