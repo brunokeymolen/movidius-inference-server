@@ -20,8 +20,8 @@ frozen_darknet_yolov3_model.bin<br>
 These is a converted YoloV3 Darknet model to Intel Movidius IR.<br>
 original models: https://pjreddie.com/darknet/yolo/
 <p>
-Tutorial to convert models for Raspberry Pi:<br>
-see http.keymolen.com/<br>
+Tutorial to convert models to Intel Movidius IR
+http://www.keymolen.com/2020/04/run-yolov3-on-raspberry-pi-with-intel.html
 
 
 Run
