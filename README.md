@@ -5,8 +5,7 @@ YOLOv3 COCO Inference Web Service for Intel® Movidius NCS2
 
 Intro
 --------
-This project is originally made to run on a Raspberry Pi, though it should run on any linux device that has OpenVINO and NCS2 support.
-http://www.keymolen.com
+This project is made to run on a Raspberry Pi, though it should run on any linux device that has OpenVINO and NCS2 support.
 
 
 Dependencies
