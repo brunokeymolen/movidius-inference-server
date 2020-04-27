@@ -1,27 +1,28 @@
-YoloV3 Intel Movidius NCS2 Inference Server
-===========================================
+YOLOv3 COCO Inference Web Service for Intel® Movidius NCS2
+==========================================================
 
 <img src="doc/example-1.png" width="700">
 
-Tutorial:
+Intro
 --------
+This project is originally made to run on a Raspberry Pi, though it should run on any linux device that has OpenVINO and NCS2 support.
 http://www.keymolen.com
 
 
-Dependencies:
+Dependencies
 ------------
 
-coco.names
+coco.names<br>
 wget https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names
-
-frozen_darknet_yolov3_model.xml
-frozen_darknet_yolov3_model.bin
-
-These is a converted YoloV3 Darknet model to Intel Movidius IR.
+<p>
+frozen_darknet_yolov3_model.xml<br>
+frozen_darknet_yolov3_model.bin<br>
+<p>
+YOLOv3 Darknet model (trained on coco dataset) in IR format for Intel Movidius.<br>
 original models: https://pjreddie.com/darknet/yolo/
-
-Tutorial to convert models for Raspberry Pi:
-see http.keymolen.com/ 
+<p>
+Tutorial to convert models to Intel Movidius IR
+http://www.keymolen.com/2020/04/run-yolov3-on-raspberry-pi-with-intel.html
 
 
 Run
